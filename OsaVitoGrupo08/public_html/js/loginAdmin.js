@@ -1,18 +1,14 @@
-window.addEventListener('load', go, false);
+window.addEventListener('load', iniciar, false);
 
-function go() {
-    if (document.form.password.value == 'admin' && document.form.login.value == 'admin') {
-        document.form.submit();
-    } else {
-        alert("Porfavor ingrese, nombre de usuario y contraseña correctos.");
-    }
+function iniciar() {
+    var boton = document.getElementById("confirmarPac");
+    boton.addEventListener('click', go, false);
 }
 
-function nuevoitem() {
-    var clave = document.getElementById('clave').value;
-    var valor = document.getElementById('texto').value;
-    localStorage.setItem(clave, valor);
-    mostrar();
-    document.getElementById('clave').value = '';
-    document.getElementById('texto').value = '';
+function go() {
+    if (window.document.getElementById('contraseña').value == "admin" && window.document.getElementById('usuario').value == "admin") {
+        window.open("opcionesAdmin.html");
+    } else {
+        window.alert("Por favor ingrese, nombre de usuario y contraseña correctos.");
+    }
 }
