@@ -10,6 +10,11 @@ function iniciar() {
         btnGrabar.addEventListener('click', agregarPaciente, false);
         alert("Funciona");
     }
+    else if(document.getElementById('confirmar').name == "sanitario"){
+        btnGrabar = document.getElementById('confirmar');
+        btnGrabar.addEventListener('click', agregarSanitario, false);
+        alert("Funciona");
+    }
         
     var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
     var solicitud = indexedDB.open("base");
@@ -52,6 +57,30 @@ function agregarPaciente() {
         document.querySelector("#movil").value = '';
         document.querySelector("#sexo").value = '';
         alert('Paciente agregado');
+        mostrarBaseDeDatos();
+    };
+}
+
+function agregarSanitario() {
+    //var active = bd.result;
+    var data = bd.transaction(["sanitario"], "readwrite");
+    var object = data.objectStore("sanitario");
+
+    var request = object.put({
+        nombre : document.querySelector("#nombre").value,
+        especialidad : document.querySelector("#especialidad").value,
+        nColegiado : document.querySelector("#nColegiado").value
+    });
+
+    request.onerror = function (e) {
+        alert(request.error.name + '\n\n' + request.error.message);
+    };
+
+    data.oncomplete = function (e) {
+        document.querySelector("#nombre").value = '';
+        document.querySelector('#especialidad').value = '';
+        document.querySelector('#nColegiado').value = '';
+        alert('Sanitario agregado');
         mostrarBaseDeDatos();
     };
 }

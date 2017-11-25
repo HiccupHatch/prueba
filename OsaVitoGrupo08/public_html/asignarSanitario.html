@@ -6,11 +6,22 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>OSAVITO DEL GRUPO 08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <form name="asignarPaciente" id="asignarPaciente" method="get" action="">
+                <p>Num. TIS: <input type="number" name="TIS" id="TIS" required=""/>
+                <p>Especilidad:
+                <datalist id="info">
+                    <option value="medicina" >
+                    <option value="enfermeria" >
+                    <option value="obstetricia" >
+                </datalist>
+                <input type="text" name="especialidad" id="especialidad" list="info" />
+                <p>Nº colegiado: <input type="number" name="nColegiado" id="nColegiado" required=""/>
+                <p><input type="submit" value="Asignar" name ="asignarPac"/>
+        </form>
     </body>
 </html>
