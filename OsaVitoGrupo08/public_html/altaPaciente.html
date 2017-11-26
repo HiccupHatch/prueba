@@ -12,24 +12,24 @@ and open the template in the editor.
 
         <link rel="stylesheet" href="css/arrastrarimagen.css">
         <script src="js/arrastrarimagen.js"></script>
+        
         <script src="js/baseDeDatos.js"></script>
+        <script src="js/logout.js"></script>
     </head>
     <body>
         <form name="form" id="form" method="get" action="">
             <p>Nombre:<input type="text" name="Nombre" id="nombre" required>
             <p>Sexo:
-            <p><input type="radio" name="Sexo" id = "sexo" value="H">Hombre
-            <p><input type="radio" name="Sexo" id="sexo" value="V">Mujer
+                <p><input type="radio" name="sexo" value="H" id = "sexo" checked="checked" />Hombre
+                <p><input type="radio" name="sexo" id = "sexo" value="M" />Mujer
             <p>TIS:<input type="number" name="TIS" id="tis" required>
             <p>Fecha nacimiento:<input type="date" name="fechaNacimiento" id="fechaNacimiento" required>
             <p>Móvil:<input type="tel" name="movil" id="movil" required>
             <p>Foto:
-            <p><div id="caja">
+            <p><div id="caja" >
                 <p></div>
             <p><input type="button" value="Confirmar" id="confirmar" name ="paciente"/>
         </form>
-        <section id="cajadatos">
-            Aquí irá la base de datos
-        </section>
+        <input type="button" value="Logout" name="logout" />
     </body>
 </html>

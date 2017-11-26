@@ -10,6 +10,6 @@ function go() {
         window.open("opcionesAdmin.html");
         window.close();
     } else {
-        window.alert("Por favor ingrese, nombre de usuario y contraseña correctos.");
+        window.alert("Por favor ingrese nombre de usuario y contraseña correctos.");
     }
 }

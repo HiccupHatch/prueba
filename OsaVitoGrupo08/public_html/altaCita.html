@@ -10,13 +10,15 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        <script src="js/baseDeDatos.js"></script>
         <script src="js/logout.js"></script>
     </head>
     <body>
-        <form>Elija la acción que desea realizar:
-            <p><a href="altaPaciente.html"><input type="button" value="Dar de alta paciente" name="btnPaciente" /> </a>
-            <p><a href="altaSanitario.html"><input type="button" value="Dar de alta sanitario" name="btnSanitario" /> </a>
-            <p><a href="asignarSanitario.html"><input type="button" value="Asignar sanitario" name="btnAsignar" /> </a>
+        <form name="asignarPaciente" id="altaCita" method="get" action="">
+            <p>Sanitario: <select id="info" name="info" required=""></select>
+            <p>Fecha: <input type="date" id="fecha" name="fecha" required="">
+            <p>Hora: <input type="time" id="hora" name="hora" required="">
+            <p><input type="button" value="Solicitar" id ="confirmar" name ="altaCita"/>
         </form>
         <input type="button" value="Logout" name="logout" />
     </body>

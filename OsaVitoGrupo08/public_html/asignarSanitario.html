@@ -9,19 +9,25 @@ and open the template in the editor.
         <title>OSAVITO DEL GRUPO 08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/baseDeDatos.js"></script>
+        <script src="js/logout.js"></script>
     </head>
     <body>
+        <section id="cajadatos">
+            Aquí irá la tabla de paciente
+        </section>
+        <section id="cajadatos2">
+            Aquí irá la tabla de sanitario
+        </section>
         <form name="asignarPaciente" id="asignarPaciente" method="get" action="">
-                <p>Num. TIS: <input type="number" name="TIS" id="TIS" required=""/>
-                <p>Especilidad:
-                <datalist id="info">
-                    <option value="medicina" >
-                    <option value="enfermeria" >
-                    <option value="obstetricia" >
-                </datalist>
-                <input type="text" name="especialidad" id="especialidad" list="info" />
-                <p>Nº colegiado: <input type="number" name="nColegiado" id="nColegiado" required=""/>
-                <p><input type="submit" value="Asignar" name ="asignarPac"/>
+            <p>Num. TIS:<select id="tis" name="tis" required=""></select>
+                <input type="button" value="Asignar" id ="confirmar" name ="asignarPac"/>
+            <p>Especilidad:<select id="info" name="info" required=""></select>
+                <input type="button" value="Elegir" id ="sanit" name ="sanit" />
+            <p>Nº colegiado: <select id="nColegiado" name="nColegiado" required=""></select>
+            <p><input type="button" value="Asignar" id ="enviar" name ="enviar"/>
         </form>
+        <input type="button" value="Logout" name="logout" />
     </body>
 </html>

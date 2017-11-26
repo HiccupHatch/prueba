@@ -1,12 +1,12 @@
 window.addEventListener('load', iniciar, false);
 
 function iniciar() {
-    var boton = document.getElementById('grabar');
+    var boton = document.getElementById('confirmar');
     boton.addEventListener('click', nuevoitem, false);
     mostrar();
 }
 function nuevoitem() {
-    var clave = document.getElementById('clave').value;
+    var clave = document.getElementById('tis').value;
     var valor = document.getElementById('texto').value;
     sessionStorage.setItem(clave, valor);
     mostrar();
