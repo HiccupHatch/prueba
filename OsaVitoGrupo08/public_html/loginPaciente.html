@@ -15,7 +15,7 @@ and open the template in the editor.
     <body>
         <section>
             <form name="fLoginPac" id="fLoginPac" method="get" action="">
-                Paciente (TIS): <input type="number" name="TIS" id="tis" required=""/>
+                Paciente (TIS): <input name="TIS" id="tis" pattern="[0-9]{8}" maxlength="8" required=""/>
                 Fecha nacimiento: <input type="date" name="fecha" id="fecha" required=""/>
                 <input type="submit" value="Confirmar" id ="confirmar" name ="confirmarPac"/>
             </form>

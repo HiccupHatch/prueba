@@ -17,7 +17,7 @@ and open the template in the editor.
         <form name="asignarPaciente" id="altaCita" method="get" action="">
             <p>Sanitario: <select id="info" name="info" required=""></select>
             <p>Fecha: <input type="date" id="fecha" name="fecha" required="">
-            <p>Hora: <input type="time" id="hora" name="hora" required="">
+            <p>Hora: <input type="time" id="hora" name="hora" step="900" min="09:00" max="10:00" required="">
             <p><input type="button" value="Solicitar" id ="confirmar" name ="altaCita"/>
         </form>
         <input type="button" value="Logout" name="logout" />

@@ -19,7 +19,6 @@ function iniciar() {
     } else if (document.getElementById('confirmar').name == "confirmarPac") {
         btnGrabar.addEventListener('click', confirmarLogin, false);
     } else if (document.getElementById('confirmar').name == "altaCita") {
-        btnGrabar.addEventListener('click', agregarCita, false);
         document.getElementById("confirmar").addEventListener('click', agregarCita, false);
     }
 
@@ -178,7 +177,7 @@ function agregarCita(){
         fecha: document.querySelector("#fecha").value,
         hora: document.querySelector("#hora").value
     });
-
+    
     request.onerror = function (e) {
         alert(request.error.name + '\n\n' + request.error.message);
     };
@@ -382,7 +381,8 @@ function busFechPac(e) {
         if (cursor.value.fechaNacimiento == fecha) {
             sessionStorage.setItem("tis", document.getElementById('tis').value);
             sessionStorage.setItem("fecha", fecha);
-            window.open("opcionesPac.html");
+            document.location.href = 'opcionesPac.html';
+            //window.open("opcionesPac.html");
         }
         cursor.continue();
     }

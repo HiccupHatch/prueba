@@ -7,8 +7,9 @@ function iniciar() {
 
 function go() {
     if (window.document.getElementById('contraseña').value == "admin" && window.document.getElementById('usuario').value == "admin") {
-        window.open("opcionesAdmin.html");
-        window.close();
+        document.location.href = 'opcionesAdmin.html';
+        //window.open("opcionesAdmin.html");
+        //window.close();
     } else {
         window.alert("Por favor ingrese nombre de usuario y contraseña correctos.");
     }
