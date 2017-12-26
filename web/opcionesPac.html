@@ -9,12 +9,15 @@ and open the template in the editor.
         <title>OSAVITO DEL GRUPO 08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="js/logout.js"></script>
     </head>
     <body>
-        <form>Elija el tipo de inicio de sesión:
-            <p><a href="loginPaciente.jsp"><input type="button" value="Paciente" name="btnPaciente" /> </a>
-            <p><a href="loginSanitario.html"><input type="button" value="Sanitario" name="btnSanitario" /> </a>
-            <p><a href="loginAdministrador.html"><input type="button" value="Administrador" name="btnAdministrador" /> </a>
+        <form>Elija la acción que desea realizar:
+            <p><a href="altaCita.html"><input type="button" value="Solicitar cita" name="btnAlta" /> </a>
+            <p><a href="bajaCita.html"><input type="button" value="Eliminar cita" name="btnBaja" /> </a>
+            
         </form>
+        <input type="button" value="Logout" name="logout" />
     </body>
 </html>
