@@ -5,20 +5,24 @@
  */
 package servlets;
 
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.sql.*;
-import java.text.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import utils.BD;
 
 /**
  *
  * @author Hiccup
  */
-public class loginPaciente extends HttpServlet {
+public class horaCita extends HttpServlet {
 
     private Connection con;
     private Statement set;
@@ -28,40 +32,28 @@ public class loginPaciente extends HttpServlet {
     public void init(ServletConfig cfg) throws ServletException {
         con = BD.getConexion();
     }
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ParseException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String tis = request.getParameter("TIS");
-        String date = request.getParameter("fecha");
         
-        boolean existe=false;
+        String numColegiado = request.getParameter("info");
         HttpSession s = request.getSession();
+        s.setAttribute("numColegiado", numColegiado);
         try {
             set = con.createStatement();
-            rs = set.executeQuery("SELECT * FROM paciente WHERE tis = " + tis + "");
+            rs = set.executeQuery("SELECT * FROM sanitario WHERE numColegiado = " + numColegiado);
             if (rs.next()) {
-                String fecha = rs.getString("fechaNac");
-                if (fecha.equals(date)) {
-                    s.setAttribute("nombre", rs.getString("nombre"));
-                    existe = true;
-                }
+                String nombre = rs.getString("nombre");
+                s.setAttribute("nombreCol", nombre);
+                s.setAttribute("fecha", request.getParameter("fecha"));
             }
             rs.close();
             set.close();
         } catch (SQLException ex1) {
-            System.out.println("No lee de la tabla Paciente. " + ex1);
+            System.out.println("No lee de la tabla sanitario. " + ex1);
         }
-        if(existe){
-            //request.getRequestDispatcher("opcionesPac").forward(request, response);
-            s.setAttribute("tis", tis);
-            s.setAttribute("date", date);
-            response.sendRedirect("opcionesPac");
-        }else{
-            //request.getRequestDispatcher("estoNoHaceNada").forward(request, response);
-            response.sendRedirect("loginPaciente");
-        }
-
+        response.sendRedirect("horasLibres");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -76,11 +68,7 @@ public class loginPaciente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(loginPaciente.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -94,12 +82,7 @@ public class loginPaciente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            System.err.println("potato0");
-            Logger.getLogger(loginPaciente.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

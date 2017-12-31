@@ -1,20 +1,23 @@
+<%-- 
+    Document   : opcionesPac
+    Created on : 28-dic-2017, 15:09:06
+    Author     : Hiccup
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>OSAVITO DEL GRUPO 08</title>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <script src="js/logout.js"></script>
     </head>
     <body>
-        <form>Elija la acción que desea realizar:
-            <p><a href="altaCita.html"><input type="button" value="Solicitar cita" name="btnAlta" /> </a>
+        
+        <form>Elija la acci&oacuten que desea realizar, <%=session.getAttribute("nombre")%>:
+            <p><a href="seleccionarSanitario"><input type="button" value="Solicitar cita" name="btnAlta" /> </a>
             <p><a href="bajaCita.html"><input type="button" value="Eliminar cita" name="btnBaja" /> </a>
             
         </form>

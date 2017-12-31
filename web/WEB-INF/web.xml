@@ -12,17 +12,49 @@
         <servlet-name>loginPaciente</servlet-name>
         <jsp-file>/loginPaciente.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>opcionesPac</servlet-name>
+        <jsp-file>/opcionesPac.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>altaCita</servlet-name>
+        <jsp-file>/altaCita.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>horaCita</servlet-name>
+        <servlet-class>servlets.horaCita</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>horasLibres</servlet-name>
+        <jsp-file>/horaLibreMedico.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BD</servlet-name>
         <url-pattern>/BD</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>servletLoginPaciente</servlet-name>
-        <url-pattern>/loginPaciente</url-pattern>
+        <servlet-name>opcionesPac</servlet-name>
+        <url-pattern>/opcionesPac</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>loginPaciente</servlet-name>
-        <url-pattern>/loginPaciente.jsp</url-pattern>
+        <url-pattern>/loginPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>altaCita</servlet-name>
+        <url-pattern>/seleccionarSanitario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>horaCita</servlet-name>
+        <url-pattern>/horaCita</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>horasLibres</servlet-name>
+        <url-pattern>/horasLibres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletLoginPaciente</servlet-name>
+        <url-pattern>/sLoginPaciente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
