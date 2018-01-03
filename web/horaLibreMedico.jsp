@@ -20,8 +20,8 @@
 
         <%!
             private Connection con;
-            private Statement set, set2, set3;
-            private ResultSet rs, rs2, rs3;
+            private Statement set, set2, set3, set4;
+            private ResultSet rs, rs2, rs3, rs4;
 
             public void jspInit() {
                 con = BD.getConexion();
@@ -79,37 +79,73 @@
             boolean h1 = false, h2 = false, h3 = false, h4 = false; //Los buleanos para saber si el día elegido el médico está ocupado
             boolean m1 = false, m2 = false, m3 = false, m4 = false;
             //hacemos el select * para hoy
-            set2 = con.createStatement();
-            rs2 = set2.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + " and fecha = \"" + f.format(date1).toString() + "\"");
-            while (rs2.next()) {
-                if (rs2.getString("hora").equals("09:15")) {
+            set = con.createStatement();
+            rs = set.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + " and fecha = \"" + f.format(date1).toString() + "\"");
+            while (rs.next()) {
+                if (rs.getString("hora").equals("09:15")) {
                     h1 = true;
                 }
-                if (rs2.getString("hora").equals("09:30")) {
+                if (rs.getString("hora").equals("09:30")) {
                     h2 = true;
                 }
-                if (rs2.getString("hora").equals("09:45")) {
+                if (rs.getString("hora").equals("09:45")) {
                     h3 = true;
                 }
-                if (rs2.getString("hora").equals("10:00")) {
+                if (rs.getString("hora").equals("10:00")) {
                     h4 = true;
                 }
             }
 
-            set3 = con.createStatement();
-            rs3 = set3.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + " and fecha = \"" + f.format(nextDay) + "\"");
-            while (rs3.next()) {
-                if (rs3.getString("hora").equals("09:15")) {
+            set2 = con.createStatement();
+            rs2 = set2.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + " and fecha = \"" + f.format(nextDay) + "\"");
+            while (rs2.next()) {
+                if (rs2.getString("hora").equals("09:15")) {
                     m1 = true;
                 }
-                if (rs3.getString("hora").equals("09:30")) {
+                if (rs2.getString("hora").equals("09:30")) {
                     m2 = true;
                 }
-                if (rs3.getString("hora").equals("09:45")) {
+                if (rs2.getString("hora").equals("09:45")) {
                     m3 = true;
                 }
-                if (rs3.getString("hora").equals("10:00")) {
+                if (rs2.getString("hora").equals("10:00")) {
                     m4 = true;
+                }
+            }
+            
+            boolean p1 = false, p2 = false, p3 = false, p4 = false;
+            boolean p5 = false, p6 = false, p7 = false, p8 = false;
+            set3 = con.createStatement();
+            rs3 = set3.executeQuery("SELECT * FROM cita where tis = " + tis + " and fecha = \"" + f.format(date1).toString() + "\"");
+            while (rs3.next()) {
+                if (rs3.getString("hora").equals("09:15")) {
+                    p1 = true;
+                }
+                if (rs3.getString("hora").equals("09:30")) {
+                    p2 = true;
+                }
+                if (rs3.getString("hora").equals("09:45")) {
+                    p3 = true;
+                }
+                if (rs3.getString("hora").equals("10:00")) {
+                    p4 = true;
+                }
+            }
+            
+            set4 = con.createStatement();
+            rs4 = set4.executeQuery("SELECT * FROM cita where tis = " + tis + " and fecha = \"" + f.format(nextDay) + "\"");
+            while (rs4.next()) {
+                if (rs4.getString("hora").equals("09:15")) {
+                    p1 = true;
+                }
+                if (rs4.getString("hora").equals("09:30")) {
+                    p2 = true;
+                }
+                if (rs4.getString("hora").equals("09:45")) {
+                    p3 = true;
+                }
+                if (rs4.getString("hora").equals("10:00")) {
+                    p4 = true;
                 }
             }
         %>
@@ -135,18 +171,7 @@
             </table>
             <p><input type="submit" value="Confirmar" id="confirmar" name ="cita"/>
         </form>
-        <%
-        %>
-        <form name="elegirHora" id="horaLibre" method="post" action="horaCita">
-            <p>Hora:
-                <select id="hora" name="hora" required="">
-
-                    <option value="<%="09:00"%>"><%=f.format(date1)%>, 09:00</option>
-
-                    <option value="<%="09:00"%>"><%="09:00"%></option>
-                </select>
-            <p><input type="submit" value="Escoger" id ="confirmar" name ="horaLibre"/>
-        </form>
+        
         <%}%>
     </body>
 </html>

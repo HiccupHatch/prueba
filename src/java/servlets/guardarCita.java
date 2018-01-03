@@ -58,6 +58,7 @@ public class guardarCita extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet guardarCita</title>");
+            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/estilo.css\" media=\"screen\" />");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet guardarCita at " + request.getContextPath() + "</h1>");
