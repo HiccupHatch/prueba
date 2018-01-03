@@ -37,6 +37,8 @@
 
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 
+            SimpleDateFormat f2 = new SimpleDateFormat("dd-MM-yyyy");
+
             java.util.Date date1 = f.parse(fecha);
 
             Calendar cal = new GregorianCalendar();
@@ -47,7 +49,9 @@
                 cal.add(Calendar.DAY_OF_MONTH, 1);
             }
             java.util.Date nextDay = cal.getTime();
-
+            
+            session.setAttribute("f1", f.format(date1));
+            session.setAttribute("f2", f.format(nextDay));
             /*
             cal.setTime(date1);
             if(cal.get(Calendar.DAY_OF_WEEK) == 2){//si el día escogido es lunes (domigno -> 1, lunes -> 2) 
@@ -76,7 +80,7 @@
             boolean m1 = false, m2 = false, m3 = false, m4 = false;
             //hacemos el select * para hoy
             set2 = con.createStatement();
-            rs2 = set2.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + "and fecha =" + date1);
+            rs2 = set2.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + " and fecha = \"" + f.format(date1).toString() + "\"");
             while (rs2.next()) {
                 if (rs2.getString("hora").equals("09:15")) {
                     h1 = true;
@@ -91,51 +95,54 @@
                     h4 = true;
                 }
             }
-            
-            set = con.createStatement();
-            rs = set.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + "and fecha =" + nextDay);
-            while (rs.next()) {
-                if (rs.getString("hora").equals("09:15")) {
+
+            set3 = con.createStatement();
+            rs3 = set3.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + " and fecha = \"" + f.format(nextDay) + "\"");
+            while (rs3.next()) {
+                if (rs3.getString("hora").equals("09:15")) {
                     m1 = true;
                 }
-                if (rs.getString("hora").equals("09:30")) {
+                if (rs3.getString("hora").equals("09:30")) {
                     m2 = true;
                 }
-                if (rs.getString("hora").equals("09:45")) {
+                if (rs3.getString("hora").equals("09:45")) {
                     m3 = true;
                 }
-                if (rs.getString("hora").equals("10:00")) {
+                if (rs3.getString("hora").equals("10:00")) {
                     m4 = true;
                 }
             }
         %>
-        <h2>Buenos días <%=session.getAttribute("nombre")%></h2>
-        <h2>Éstas son las horas libres del sanitario <%=session.getAttribute("nombreCol")%></h2>
-        <h2>Cerca del día <%=fecha%></h2>
-        <%if(h1 && h2 && h3 && h4 && m1 && m2 && m3 && m4){%>
+        <h3>Buenos días <%=session.getAttribute("nombre")%></h3>
+        <h3>Éstas son las horas libres del sanitario <%=session.getAttribute("nombreCol")%> con número de colegiado <%=session.getAttribute("numColegiado")%> </h3>
+        <h3>Cerca del día <%=f.format(date1)%></h3>
+        <%if (h1 && h2 && h3 && h4 && m1 && m2 && m3 && m4) {%>
         <h2> No hay citas disponibles para el día seleccionado y el siguiente, elija cita para otro día </h2>
-        <%}
-else{%>
-        <table><%=f.format(date1)%>
-        
-        <tr><td>1</td> <td>2<td/></tr>
-        <tr><td>3</td> <td>4<td/></tr>
-        </table>
-        
-        <table><%=f.format(nextDay)%>
-        
-        <tr><td>1</td> <td>2<td/></tr>
-        <tr><td>3</td> <td>4<td/></tr>
-        </table>
-         
+        <%} else {%>
+        <form name="form" id="form" method="post" action="guardarCita">
+            <table id="1"><%=f.format(date1)%>
+                <tr><td><input type="radio" name="cita" value="<%=1%>" id = "cita" checked="checked" />09:15</td>
+                    <td><input type="radio" name="cita" value="2" id = "cita" checked="checked" />09:30<td/></tr>
+                <tr><td><input type="radio" name="cita" value="3" id = "cita" checked="checked" />09:45</td>
+                    <td><input type="radio" name="cita" value="4" id = "cita" checked="checked" />10:00<td/></tr>
+            </table>
+
+            <table id ="2"><%=f.format(nextDay)%>
+                <tr><td><input type="radio" name="cita" value="5" id = "cita" checked="checked" />09:15</td>
+                    <td><input type="radio" name="cita" value="6" id = "cita" checked="checked" />09:30<td/></tr>
+                <tr><td><input type="radio" name="cita" value="7" id = "cita" checked="checked" />09:45</td>
+                    <td><input type="radio" name="cita" value="8" id = "cita" checked="checked" />10:00<td/></tr>
+            </table>
+            <p><input type="submit" value="Confirmar" id="confirmar" name ="cita"/>
+        </form>
         <%
         %>
         <form name="elegirHora" id="horaLibre" method="post" action="horaCita">
             <p>Hora:
                 <select id="hora" name="hora" required="">
-                    
+
                     <option value="<%="09:00"%>"><%=f.format(date1)%>, 09:00</option>
-                    
+
                     <option value="<%="09:00"%>"><%="09:00"%></option>
                 </select>
             <p><input type="submit" value="Escoger" id ="confirmar" name ="horaLibre"/>
