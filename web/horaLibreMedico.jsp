@@ -9,8 +9,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>OSAVITO DEL GRUPO 08</title>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
     </head>
     <body>
+         <header>
+            <div id="a">
+                <h1><a href="index.html">OsaVito</a></h1>
+            </div>
+        </header>
+        
         <%!
             private Connection con;
             private Statement set, set2, set3;

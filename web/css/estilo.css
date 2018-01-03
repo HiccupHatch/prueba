@@ -1,0 +1,24 @@
+body {
+    font-family: Georgia, "Times New Roman",
+          Times, serif;
+    color: purple;
+    background-color: #85b5e5 }
+  h1 {
+    font-family: Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif }
+  
+ /* Encabezado */
+header
+{
+    background-color: #85b5e5;
+}
+
+#a
+{
+    display: inline-block;
+}
+
+
+
+
+  

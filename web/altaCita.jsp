@@ -9,8 +9,15 @@
         <title>OSAVITO DEL GRUPO 08</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="js/validacion.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
     </head>
     <body>
+        <header>
+            <div id="a">
+                <h1><a href="index.html">OsaVito</a></h1>
+            </div>
+        </header>
+        
         <%!
             private Connection con;
             private Statement set, set2, set3;

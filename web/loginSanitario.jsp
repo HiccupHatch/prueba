@@ -10,8 +10,15 @@
         <title>OSAVITO DEL GRUPO 08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
     </head>
     <body>
+         <header>
+            <div id="a">
+                <h1><a href="index.html">OsaVito</a></h1>
+            </div>
+        </header>
+        
         <section>
             <form name="fLoginPac" id="fLoginPac" method="get" action="">
                 Nº colegiado: <input type="number" name="nColegiado" id="nColegiado" required=""/>
