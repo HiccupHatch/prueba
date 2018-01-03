@@ -12,12 +12,12 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
     </head>
     <body>
-         <header>
+        <header>
             <div id="a">
                 <h1><a href="index.html">OsaVito</a></h1>
             </div>
         </header>
-        
+
         <%!
             private Connection con;
             private Statement set, set2, set3;
@@ -41,13 +41,14 @@
 
             Calendar cal = new GregorianCalendar();
             cal.setTime(date1);
-            if(cal.get(Calendar.DAY_OF_WEEK) == 6){//si el día escogido es viernes
+            if (cal.get(Calendar.DAY_OF_WEEK) == 6) {//si el día escogido es viernes
                 cal.add(Calendar.DAY_OF_MONTH, 3);//el siguiente día será lunes
-            }else{
+            } else {
                 cal.add(Calendar.DAY_OF_MONTH, 1);
             }
             java.util.Date nextDay = cal.getTime();
 
+            /*
             cal.setTime(date1);
             if(cal.get(Calendar.DAY_OF_WEEK) == 2){//si el día escogido es lunes (domigno -> 1, lunes -> 2) 
                 cal.add(Calendar.DAY_OF_MONTH, -3);//el día anterior será viernes
@@ -55,132 +56,90 @@
                 cal.add(Calendar.DAY_OF_MONTH, -1);
             }
             java.util.Date prevDay = cal.getTime();
+             */
+            //Comprobamos qué horas se puede escoger hoy
+            boolean mas15 = false, mas30 = false, mas45 = false;
+            Calendar calendario = Calendar.getInstance();
+            int minutos;
+            minutos = calendario.get(Calendar.MINUTE);
+            if (minutos > 15) {
+                mas15 = true;
+                if (minutos > 30) {
+                    mas30 = true;
+                    if (minutos > 45) {
+                        mas45 = true;
+                    }
+                }
+            }
 
-            boolean citaa = false, citah = false, citam = false;
-
-            boolean citaap = false, citahp = false, citamp = false;
-            //las siguientes variables son para saber si alguna hora está asignada para ese sanitario, true sería hora ocupada
-            boolean q = false, w = false, e = false, r = false, t = false, y = false, u = false, i = false;
-            boolean qq = false, ww = false, ee = false, rr = false, tt = false, yy = false, uu = false, ii = false;
-            boolean qqq = false, www = false, eee = false, rrr = false, ttt = false, yyy = false, uuu = false, iii = false;
-            //las siguientes variables son para saber si alguna hora está asignada para ese paciente, true sería hora ocupada
-            boolean q1 = false, w1 = false, e1 = false, r1 = false, t1 = false, y1 = false, u1 = false, i1 = false;
-            boolean qq1 = false, ww1 = false, ee1 = false, rr1 = false, tt1 = false, yy1 = false, uu1 = false, ii1 = false;
-            boolean qqq1 = false, www1 = false, eee1 = false, rrr1 = false, ttt1 = false, yyy1 = false, uuu1 = false, iii1 = false;
-
+            boolean h1 = false, h2 = false, h3 = false, h4 = false; //Los buleanos para saber si el día elegido el médico está ocupado
+            boolean m1 = false, m2 = false, m3 = false, m4 = false;
+            //hacemos el select * para hoy
+            set2 = con.createStatement();
+            rs2 = set2.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + "and fecha =" + date1);
+            while (rs2.next()) {
+                if (rs2.getString("hora").equals("09:15")) {
+                    h1 = true;
+                }
+                if (rs2.getString("hora").equals("09:30")) {
+                    h2 = true;
+                }
+                if (rs2.getString("hora").equals("09:45")) {
+                    h3 = true;
+                }
+                if (rs2.getString("hora").equals("10:00")) {
+                    h4 = true;
+                }
+            }
+            
+            set = con.createStatement();
+            rs = set.executeQuery("SELECT * FROM cita where numColegiado = " + numColegiado + "and fecha =" + nextDay);
+            while (rs.next()) {
+                if (rs.getString("hora").equals("09:15")) {
+                    m1 = true;
+                }
+                if (rs.getString("hora").equals("09:30")) {
+                    m2 = true;
+                }
+                if (rs.getString("hora").equals("09:45")) {
+                    m3 = true;
+                }
+                if (rs.getString("hora").equals("10:00")) {
+                    m4 = true;
+                }
+            }
         %>
-        <h1>Buenos días <%=session.getAttribute("nombre")%></h1>
-        <h1>Éstas son las horas libres del sanitario <%=session.getAttribute("nombreCol")%></h1>
+        <h2>Buenos días <%=session.getAttribute("nombre")%></h2>
+        <h2>Éstas son las horas libres del sanitario <%=session.getAttribute("nombreCol")%></h2>
         <h2>Cerca del día <%=fecha%></h2>
+        <%if(h1 && h2 && h3 && h4 && m1 && m2 && m3 && m4){%>
+        <h2> No hay citas disponibles para el día seleccionado y el siguiente, elija cita para otro día </h2>
+        <%}
+else{%>
+        <table><%=f.format(date1)%>
+        
+        <tr><td>1</td> <td>2<td/></tr>
+        <tr><td>3</td> <td>4<td/></tr>
+        </table>
+        
+        <table><%=f.format(nextDay)%>
+        
+        <tr><td>1</td> <td>2<td/></tr>
+        <tr><td>3</td> <td>4<td/></tr>
+        </table>
+         
+        <%
+        %>
         <form name="elegirHora" id="horaLibre" method="post" action="horaCita">
             <p>Hora:
                 <select id="hora" name="hora" required="">
-                    <%while (rs.next()) {
-                            String fecha2 = rs.getString("fecha");
-                            java.util.Date date2 = f.parse(fecha2);
-
-                            if (prevDay.equals(date2)) {
-                                citaa = true;//con esto sabemos que hay alguna cita para el día anterior
-                                if (rs.getString("hora").equals("09:00")) {
-                                    q = true;
-                                }
-                                if (rs.getString("hora").equals("09:15")) {
-                                    w = true;
-                                }
-                                if (rs.getString("hora").equals("09:30")) {
-                                    e = true;
-                                }
-                                if (rs.getString("hora").equals("09:45")) {
-                                    r = true;
-                                }
-                                if (rs.getString("hora").equals("10:00")) {
-                                    t = true;
-                                }
-                                if (rs.getString("hora").equals("10:15")) {
-                                    y = true;
-                                }
-                                if (rs.getString("hora").equals("10:30")) {
-                                    u = true;
-                                }
-                                if (rs.getString("hora").equals("10:45")) {
-                                    i = true;
-                                }
-                            }
-                            if (date1.equals(date2)) {
-                                citah = true;//con esto sabemos que hay alguna cita para el día en concreto
-                                if (rs.getString("hora").equals("09:00")) {
-                                    qq = true;
-                                }
-                                if (rs.getString("hora").equals("09:15")) {
-                                    ww = true;
-                                }
-                                if (rs.getString("hora").equals("09:30")) {
-                                    ee = true;
-                                }
-                                if (rs.getString("hora").equals("09:45")) {
-                                    rr = true;
-                                }
-                                if (rs.getString("hora").equals("10:00")) {
-                                    tt = true;
-                                }
-                                if (rs.getString("hora").equals("10:15")) {
-                                    yy = true;
-                                }
-                                if (rs.getString("hora").equals("10:30")) {
-                                    uu = true;
-                                }
-                                if (rs.getString("hora").equals("10:45")) {
-                                    ii = true;
-                                }
-                            }
-
-                            if (nextDay.equals(date2)) {
-                                citam = true;//con esto sabemos que hay alguna cita para el día siguiente
-                                if (rs.getString("hora").equals("09:00")) {
-                                    qqq = true;
-                                }
-                                if (rs.getString("hora").equals("09:15")) {
-                                    www = true;
-                                }
-                                if (rs.getString("hora").equals("09:30")) {
-                                    eee = true;
-                                }
-                                if (rs.getString("hora").equals("09:45")) {
-                                    rrr = true;
-                                }
-                                if (rs.getString("hora").equals("10:00")) {
-                                    ttt = true;
-                                }
-                                if (rs.getString("hora").equals("10:15")) {
-                                    yyy = true;
-                                }
-                                if (rs.getString("hora").equals("10:30")) {
-                                    uuu = true;
-                                }
-                                if (rs.getString("hora").equals("10:45")) {
-                                    iii = true;
-                                }
-                            }
-                        }
-                        java.util.Date today = Calendar.getInstance().getTime();
-                        String reportDate = f.format(today);
-                        java.util.Date hoy = f.parse(reportDate);
-                        if(!prevDay.equals(hoy)){//si día escogido es mañana, comprobar si hay hoy disponible tras hora actual
-                            
-                        }
-                        if (!q && !q1) {
-                            Calendar cal1 = new GregorianCalendar();
-                            cal.setTime(date1);
-                            cal.add(Calendar.DAY_OF_MONTH, 1);
-                            java.util.Date todayDay = cal1.getTime();
-                            java.util.Date todayDate = new java.util.Date();
-
-                    %>
-                    <option value="<%="09:00"%>"><%=f.format(prevDay)%>, 09:00</option>
-                    <%}%>
+                    
+                    <option value="<%="09:00"%>"><%=f.format(date1)%>, 09:00</option>
+                    
                     <option value="<%="09:00"%>"><%="09:00"%></option>
                 </select>
             <p><input type="submit" value="Escoger" id ="confirmar" name ="horaLibre"/>
         </form>
+        <%}%>
     </body>
 </html>

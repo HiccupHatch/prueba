@@ -26,6 +26,6 @@
             <p><a href="bajaCita.html"><input type="button" value="Eliminar cita" name="btnBaja" /> </a>
             
         </form>
-        <input type="button" value="Logout" name="logout" />
+        <a href="loginPaciente"><input type="button" value="Logout" name="logout" />
     </body>
 </html>

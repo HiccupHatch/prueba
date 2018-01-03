@@ -8,8 +8,9 @@
     <head>
         <title>OSAVITO DEL GRUPO 08</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="js/validacion.js"></script>
+        
         <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
+        <script src="js/validacion.js"/></script>
     </head>
     <body>
         <header>
