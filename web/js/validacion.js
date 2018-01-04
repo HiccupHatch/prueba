@@ -13,7 +13,7 @@ function iniciar() {
         if (day < 10)
             day = '0' + day.toString();
 
-        if (hour > 10) {
+        if (hour > 9) {
             if (day < 9) {
                 day++;
                 day = '0' + day;

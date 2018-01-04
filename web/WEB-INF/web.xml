@@ -32,6 +32,10 @@
         <servlet-name>guardarCita</servlet-name>
         <servlet-class>servlets.guardarCita</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>bajaCita</servlet-name>
+        <jsp-file>/bajaCita.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BD</servlet-name>
         <url-pattern>/BD</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>guardarCita</servlet-name>
         <url-pattern>/guardarCita</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bajaCita</servlet-name>
+        <url-pattern>/bajaCita</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
