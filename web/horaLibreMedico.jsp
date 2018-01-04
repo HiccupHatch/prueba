@@ -162,7 +162,7 @@
             }
         %>
         <h3>Buenos días <%=session.getAttribute("nombre")%></h3>
-        <h3>Éstas son <%=dia%> las <%=diapasado%> horas libres del sanitario <%=session.getAttribute("nombreCol")%> con número de colegiado <%=session.getAttribute("numColegiado")%> </h3>
+        <h3>Éstas son las horas libres del sanitario <%=session.getAttribute("nombreCol")%> con número de colegiado <%=session.getAttribute("numColegiado")%> </h3>
         <h3>Cerca del día <%=f.format(date1)%></h3>
         <%if ((masdelas10 && (p5 || m1) && (p6 || m2) && (p7 || m3) && (p8 || m4)) || ((p1 || h1) && (p2 || h2) && (p3 || h3) && (p4 || h4) && (p5 || m1) && (p6 || m2) && (p7 || m3) && (p8 || m4))) {%>
         <h2> No hay citas disponibles para el día seleccionado y el siguiente, elija cita para otro día </h2>
