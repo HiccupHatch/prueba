@@ -27,5 +27,13 @@
                 <input type="submit" value="Confirmar" id ="confirmar" name ="confirmarPac"/>
             </form>
         </section>
+        
+        <footer>
+            <div id="b">
+                <p>Osavito footer</p>
+                <p>Información de contacto: <a href="mailto:osavito@gmail.com">
+                osavito@gmail.com</a>.</p>
+            </div>
+        </footer>
     </body>
 </html>

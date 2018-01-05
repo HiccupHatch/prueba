@@ -16,16 +16,23 @@
     </head>
     <body>
          <header>
-            <div id="a">
-                <h1><a href="index.html">OsaVito</a></h1>
+            <div id="a" >
+                <h1><a href="index.html">OsaVito</a></h1> <div id="logout"> Cerrar sesi&oacuten </div>
             </div>
         </header>
         
         <form>Elija la acci&oacuten que desea realizar, <%=session.getAttribute("nombre")%>:
             <p><a href="seleccionarSanitario"><input type="button" value="Solicitar cita" name="btnAlta" /> </a>
             <p><a href="bajaCita.html"><input type="button" value="Eliminar cita" name="btnBaja" /> </a>
-            
+            <p><a href="loginPaciente"><input type="button" value="Cerrar sesión" name="logout" /></a>
         </form>
-        <a href="loginPaciente"><input type="button" value="Logout" name="logout" />
+        
+        <footer>
+            <div id="b">
+                <p>Osavito footer</p>
+                <p>Información de contacto: <a href="mailto:osavito@gmail.com">
+                osavito@gmail.com</a>.</p>
+            </div>
+        </footer>
     </body>
 </html>

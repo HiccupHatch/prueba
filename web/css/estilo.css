@@ -1,24 +1,48 @@
 body {
+    margin:0px 0px 0px 0px;
     font-family: Georgia, "Times New Roman",
           Times, serif;
-    color: purple;
+    color: white;
     background-color: #85b5e5 }
   h1 {
     font-family: Helvetica, Geneva, Arial,
           SunSans-Regular, sans-serif }
   
- /* Encabezado */
-header
-{
+/* Encabezado */
+#a{
+    width: 100%;
     background-color: #85b5e5;
 }
 
-#a
-{
-    display: inline-block;
+/*Pie de página */
+#b{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #36689b;
 }
 
+input, select {
+ border: none;
+ background: #36689b;
+ color: white;
+ padding: 2px;
+ font-size: 16px;
+ border-radius: 5px;
+ position: relative;
+ box-sizing: border-box;
+ transition: all 500ms ease;
+}
 
+input:hover {
+ background: rgba(0,0,0,0);
+ color: #36689b;
+ box-shadow: inset 0 0 0 3px #36689b;
+}
 
-
-  
+#logout{
+    float: right;
+    margin-right: 20px;
+}

@@ -26,5 +26,13 @@
                 <input type="submit" value="Confirmar" name ="confirmarSan"/>
             </form>
         </section>
+        
+        <footer>
+            <div id="b">
+                <p>Osavito footer</p>
+                <p>Información de contacto: <a href="mailto:osavito@gmail.com">
+                osavito@gmail.com</a>.</p>
+            </div>
+        </footer>
     </body>
 </html>

@@ -70,7 +70,7 @@
             int dia;
             boolean hoy = false;
             dia = calendario.get(Calendar.DATE);
-            if(dia == diapasado){
+            if (dia == diapasado) {
                 hoy = true;
             }
             minutos = calendario.get(Calendar.MINUTE);
@@ -79,13 +79,16 @@
                 mas15 = true;
                 if (horas > 8 && minutos > 29) {
                     mas30 = true;
-                    if ( horas > 8 && minutos > 44) {
+                    if (horas > 8 && minutos > 44) {
                         mas45 = true;
                     }
                 }
             }
-            if (hoy && horas > 9){
-                mas15 = true; mas30 = true; mas45 = true; masdelas10 = true;
+            if (hoy && horas > 9) {
+                mas15 = true;
+                mas30 = true;
+                mas45 = true;
+                masdelas10 = true;
             }
 
             boolean h1 = false, h2 = false, h3 = false, h4 = false; //Los buleanos para saber si el día elegido el médico está ocupado
@@ -168,8 +171,8 @@
         <h2> No hay citas disponibles para el día seleccionado y el siguiente, elija cita para otro día </h2>
         <%} else {%>
         <form name="form" id="form" method="post" action="guardarCita">
-            <table id="1"><%=f.format(date1)%>
-                <%if (!mas15 && !h1 && !p1) {%>
+            <table id="1"><u><%=f.format(date1)%></u>
+                    <%if (!mas15 && !h1 && !p1) {%>
                 <tr><td><input type="radio" name="cita" value="1" id = "cita" checked="checked" />09:15</td>
                         <%}
                             if (!mas30 && !h2 && !p2) {%>
@@ -183,8 +186,8 @@
                         <%}%>
             </table>
 
-            <table id ="2"><%=f.format(nextDay)%>
-                <%if (!m1 && !p5) {%>
+            <table id ="2"><u><%=f.format(nextDay)%></u>
+                    <%if (!m1 && !p5) {%>
                 <tr><td><input type="radio" name="cita" value="5" id = "cita" checked="checked" />09:15</td>
                         <%}
                             if (!m2 && !p6) {%>
@@ -200,5 +203,13 @@
             <p><input type="submit" value="Confirmar" id="confirmar" name ="cita"/>
         </form>
         <%}%>
+        
+        <footer>
+            <div id="b">
+                <p>Osavito footer</p>
+                <p>Información de contacto: <a href="mailto:osavito@gmail.com">
+                osavito@gmail.com</a>.</p>
+            </div>
+        </footer>
     </body>
 </html>

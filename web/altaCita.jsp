@@ -66,5 +66,13 @@
             <p><input type="submit" value="Siguiente" id ="confirmar" name ="altaCita"/>
         </form>
         <a href="opcionesPac"><input type="button" value="Cancelar" name="Cancelar" />
+            
+         <footer>
+            <div id="b">
+                <p>Osavito footer</p>
+                <p>Información de contacto: <a href="mailto:osavito@gmail.com">
+                osavito@gmail.com</a>.</p>
+            </div>
+        </footer>
     </body>
 </html>
