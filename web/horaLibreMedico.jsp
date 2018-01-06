@@ -44,6 +44,7 @@
             Calendar cal = new GregorianCalendar();
             cal.setTime(date1);
             int diapasado = cal.get(Calendar.DATE);
+            
             if (cal.get(Calendar.DAY_OF_WEEK) == 6) {//si el día escogido es viernes
                 cal.add(Calendar.DAY_OF_MONTH, 3);//el siguiente día será lunes
             } else {

@@ -22,7 +22,7 @@ public class BD {
         if (conn == null) {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/osavito08", "root", "Sakuretsu9");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdosavito08", "root", "root");
                 System.out.println("Se ha conectado.");
             } catch (ClassNotFoundException ex1) {
                 System.out.println("No se ha conectado: " + ex1);

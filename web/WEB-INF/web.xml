@@ -36,6 +36,22 @@
         <servlet-name>bajaCita</servlet-name>
         <jsp-file>/bajaCita.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarCita</servlet-name>
+        <servlet-class>servlets.eliminarCita</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginSanitario</servlet-name>
+        <jsp-file>/loginSanitario.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>servletLoginSanitario</servlet-name>
+        <servlet-class>servlets.loginSanitario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>citasSanitario</servlet-name>
+        <jsp-file>/citasSanitario.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BD</servlet-name>
         <url-pattern>/BD</url-pattern>
@@ -71,6 +87,22 @@
     <servlet-mapping>
         <servlet-name>bajaCita</servlet-name>
         <url-pattern>/bajaCita</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarCita</servlet-name>
+        <url-pattern>/eliminarCita</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginSanitario</servlet-name>
+        <url-pattern>/loginSanitario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletLoginSanitario</servlet-name>
+        <url-pattern>/sLoginSanitario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>citasSanitario</servlet-name>
+        <url-pattern>/citasSanitario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

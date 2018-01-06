@@ -26,9 +26,7 @@
 
             public void jspInit() {
                 con = BD.getConexion();
-            }
-
-            ;             
+            }           
         %>
         <%
             String tis = (String) session.getAttribute("tis");
@@ -66,7 +64,7 @@
             <p><input type="submit" value="Siguiente" id ="confirmar" name ="altaCita"/>
         </form>
         <a href="opcionesPac"><input type="button" value="Cancelar" name="Cancelar" />
-            
+        <p><a href="loginPaciente"><input type="button" value="Cerrar sesión" name="logout" />  
          <footer>
             <div id="b">
                 <p>Osavito footer</p>

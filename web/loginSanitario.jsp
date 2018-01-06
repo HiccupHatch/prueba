@@ -20,9 +20,8 @@
         </header>
         
         <section>
-            <form name="fLoginPac" id="fLoginPac" method="get" action="">
-                Nº colegiado: <input type="number" name="nColegiado" id="nColegiado" required=""/>
-                Fecha nacimiento: <input type="date" name="fecha" id="fecha" required=""/>
+            <form name="fLoginPac" id="fLoginPac" method="get" action="sLoginSanitario">
+                Nº colegiado: <input type="number" name="nColegiado" pattern="[0-9]{9}" maxlength="9" id="nColegiado" required=""/>
                 <input type="submit" value="Confirmar" name ="confirmarSan"/>
             </form>
         </section>
