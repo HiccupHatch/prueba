@@ -19,7 +19,14 @@
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
     </head>
-    <body><p>A continuación se muestran las citas pasadas y las futuras.
+    <body>
+        <header>
+            <div id="a" >
+                <h1><a href="index.html">OsaVito</a></h1> <div id="logout"> <a href="loginPaciente"><input type="button" value="Cerrar sesión" name="logout" /></a> </div>
+            </div>
+        </header>
+        
+        <p>A continuación se muestran las citas pasadas y las futuras.
         <p></p>
         <%!
             private Connection con;
@@ -74,14 +81,13 @@
             %></table>
             <p><input type="submit" value="Confirmar" id="confirmar" name ="cita"/>
         </form>
-        <p><a href="loginPaciente"><input type="button" value="Cerrar sesión" name="logout" />
-    </body>
-
-    <footer>
-        <div id="b">
-            <p>Osavito footer</p>
-            <p>Información de contacto: <a href="mailto:osavito@gmail.com">
-                    osavito@gmail.com</a>.</p>
-        </div>
-    </footer>
+        
+            <footer>
+            <div id="b">
+                <p>Copyright ® Osavito </p>
+                <p>Información de contacto: <a href="mailto:osavito@osavito.com">
+                osavito@osavito.com</a>.</p>
+            </div>
+        </footer>
+    </body>    
 </html>

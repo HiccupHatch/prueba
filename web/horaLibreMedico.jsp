@@ -13,8 +13,8 @@
     </head>
     <body>
         <header>
-            <div id="a">
-                <h1><a href="index.html">OsaVito</a></h1>
+            <div id="a" >
+                <h1><a href="index.html">OsaVito</a></h1> <div id="logout"> <a href="loginPaciente"><input type="button" value="Cerrar sesión" name="logout" /></a> </div>
             </div>
         </header>
 
@@ -207,9 +207,9 @@
         
         <footer>
             <div id="b">
-                <p>Osavito footer</p>
-                <p>Información de contacto: <a href="mailto:osavito@gmail.com">
-                osavito@gmail.com</a>.</p>
+                <p>Copyright ® Osavito </p>
+                <p>Información de contacto: <a href="mailto:osavito@osavito.com">
+                osavito@osavito.com</a>.</p>
             </div>
         </footer>
     </body>

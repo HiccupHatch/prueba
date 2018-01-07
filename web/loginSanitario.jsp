@@ -28,9 +28,9 @@
         
         <footer>
             <div id="b">
-                <p>Osavito footer</p>
-                <p>Información de contacto: <a href="mailto:osavito@gmail.com">
-                osavito@gmail.com</a>.</p>
+                <p>Copyright ® Osavito </p>
+                <p>Información de contacto: <a href="mailto:osavito@osavito.com">
+                osavito@osavito.com</a>.</p>
             </div>
         </footer>
     </body>
