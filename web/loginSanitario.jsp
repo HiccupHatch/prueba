@@ -15,13 +15,13 @@
     <body>
          <header>
             <div id="a">
-                <h1><a href="index.html">OsaVito</a></h1>
+                <h1><a href="index.html"><img src ="img/logo.png"></a></h1>
             </div>
         </header>
         
         <section>
             <form name="fLoginPac" id="fLoginPac" method="get" action="sLoginSanitario">
-                Nº colegiado: <input type="number" name="nColegiado" pattern="[0-9]{9}" maxlength="9" id="nColegiado" required=""/>
+                Nº colegiado: <input type="text" name="nColegiado" pattern="[0-9]{9}" maxlength="9" id="nColegiado" required=""/>
                 <input type="submit" value="Confirmar" name ="confirmarSan"/>
             </form>
         </section>

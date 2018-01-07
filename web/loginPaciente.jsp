@@ -16,7 +16,7 @@
     <body>
         <header>
             <div id="a">
-                <h1><a href="index.html">OsaVito</a></h1>
+                <h1><a href="index.html"><img src ="img/logo.png"></a></h1>
             </div>
         </header>
         

@@ -15,7 +15,7 @@
     <body>
         <header>
             <div id="a" >
-                <h1><a href="index.html">OsaVito</a></h1> <div id="logout"> <a href="loginPaciente"><input type="button" value="Cerrar sesión" name="logout" /></a> </div>
+                <h1><a href="index.html"><img src ="img/logo.png"></a></h1> <div id="logout"> <a href="loginPaciente"><input type="button" value="Cerrar sesión" name="logout" /></a> </div>
             </div>
         </header>
         

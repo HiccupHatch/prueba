@@ -89,7 +89,7 @@ public class guardarCita extends HttpServlet {
             out.println("<h1>tis: " + tis + "</h1>");
             out.println("<h1>numcolegiado: " + numColegiado + "</h1>");
         }*/
-        response.sendRedirect("bajaCita");
+        response.sendRedirect("opcionesPac");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
